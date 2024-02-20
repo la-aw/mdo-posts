@@ -21,9 +21,9 @@ jobs:
         password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
       
     - name: Build Docker Image
-      run: docker build -t myregistry.azurecr.io/mdo-posts:v1 .
+      run: docker build -t mdoregistry.azurecr.io/mdo-posts:v1 .
         
         
     - name: Push Docker image to Azure Container Registry
-      run:  docker push myregistry.azurecr.io/mdo-posts:v1
+      run:  docker push mdoregistry.azurecr.io/mdo-posts:v1
     
