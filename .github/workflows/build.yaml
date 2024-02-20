@@ -24,7 +24,7 @@ jobs:
       run: docker build -t mdoregistry.azurecr.io/mdo-posts:$(git rev-parse --short "$GITHUB_SHA") .        
         
     - name: Push Docker image to Azure Container Registry
-      run:  docker push mdoregistry.azurecr.io/mdo-posts:$(git rev-parse --short "$GITHUB_SHA") . 
+      run:  docker push mdoregistry.azurecr.io/mdo-posts:$(git rev-parse --short "$GITHUB_SHA")
 
     - name: Log in to Azure
       uses: azure/login@v1
@@ -35,6 +35,6 @@ jobs:
       uses: Azure/functions-action@v1
       with:
         app-name: mdo-posts
-        image: mdoregistry.azurecr.io/mdo-posts:$(git rev-parse --short "$GITHUB_SHA") . 
+        image: mdoregistry.azurecr.io/mdo-posts:$(git rev-parse --short "$GITHUB_SHA")
         package: .
     
