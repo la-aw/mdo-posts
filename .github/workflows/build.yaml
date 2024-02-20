@@ -26,4 +26,11 @@ jobs:
         
     - name: Push Docker image to Azure Container Registry
       run:  docker push mdoregistry.azurecr.io/mdo-posts:v1
+
+    - name: Deploy to Azure Functions
+      uses: Azure/functions-action@v1
+      with:
+        app-name: mdo-posts
+        image: mdoregistry.azurecr.io/mdo-posts:v1
+        package: .
     
