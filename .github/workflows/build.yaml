@@ -48,7 +48,7 @@ jobs:
 
       # Step 8: Deploy to Azure App Service
       - name: Deploy to Azure App Service
-        uses: azure/webapps-container-deploy@v2
+        uses: azure/webapps-deploy@v2
         with:
           app-name: mdo-posts
           images: pbjexampleapp.azurecr.io/mdo-posts:$(git rev-parse --short "$GITHUB_SHA")
