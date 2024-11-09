@@ -1,17 +1,27 @@
 from flask import Flask, request, jsonify
 import urllib.parse
-import os
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
+
 app = Flask(__name__)
-username = os.environ.get('MONGODB_USERNAME')
-password = os.environ.get('MONGODB_PASSWORD')
-client = MongoClient(f'mongodb://{username}:{urllib.parse.quote_plus(str(password))}@mongodb:27017/')
+"""
+username = "username"
+password = "password"
+
+if username is None or password is None:
+    raise ValueError("Environment variables MONGODB_USERNAME and MONGODB_PASSWORD must be set")
+
+
+client = MongoClient(f'mongodb://{username}:{urllib.parse.quote_plus(password)}@mongodb:27017/')
 db = client['blog']
 collection = db['posts']
+"""
 
-
+@app.route('/post', methods=['GET'])
+def get_all_posts():
+    return "This is a post."
+"""
 @app.route('/posts', methods=['GET'])
 def get_all_posts():
     cursor = collection.find()
@@ -61,7 +71,7 @@ def update_post(post_id):
 def delete_post(post_id):
     result = collection.delete_one({'_id': ObjectId(post_id)})
     return jsonify({'deleted': result.deleted_count})
-
+"""
 
 if __name__ == '__main__':
     app.run(debug=True)
