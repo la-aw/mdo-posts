@@ -20,7 +20,7 @@ collection = db['posts']
 
 @app.route('/post', methods=['GET'])
 def get_all_posts():
-    return "This is a post"
+    return "This is a post."
 """
 @app.route('/posts', methods=['GET'])
 def get_all_posts():
